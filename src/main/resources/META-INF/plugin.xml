@@ -1,0 +1,29 @@
+<!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
+<idea-plugin>
+    <id>com.giffard.mvvm.template</id>
+    <name>MVVM Template</name>
+    <vendor>Giffard</vendor>
+
+
+    <depends>org.jetbrains.android</depends>
+    <depends>org.jetbrains.kotlin</depends>
+    <depends>com.intellij.modules.java</depends>
+    <depends>com.intellij.modules.platform</depends>
+
+
+    <extensions defaultExtensionNs="com.intellij">
+        <applicationService serviceImplementation="com.giffard.mvvmtemplate.services.MyApplicationService"/>
+        <projectService serviceImplementation="com.giffard.mvvmtemplate.services.MyProjectService"/>
+    </extensions>
+
+    <applicationListeners>
+        <listener class="com.giffard.mvvmtemplate.listeners.MyProjectManagerListener"
+            topic="com.intellij.openapi.project.ProjectManagerListener"/>
+    </applicationListeners>
+
+    <extensions defaultExtensionNs="com.android.tools.idea.wizard.template">
+        <wizardTemplateProvider implementation="com.giffard.mvvm.SamplePluginTemplateProviderImpl" />
+    </extensions>
+
+
+</idea-plugin>
